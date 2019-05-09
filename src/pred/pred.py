@@ -54,7 +54,7 @@ class Predict:
         forecast = self._prophet.predict(future)
         self._prophet.plot(forecast)
     
-    def model(self, mod, names, title='title', yTitle='yTitle', color=#CCFFCC):
+    def model(self, mod, names, title='title', yTitle='yTitle', color='#CCFFCC'):
         if len(names) > 0:
             mod = mod[names]
         plot = mod.iplot(kind='data', title=title, yTitle=yTitle)
