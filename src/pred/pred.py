@@ -40,4 +40,18 @@ class Dataset:
             return pd.read_csv(path, index_col=0, header=0, parse_dates=True)
 
 
+class Predict:
+    '''
+    Defines class for prediction of the data
+    '''
+    def __init__(self, ds):
+        if not ds:
+            raise Exception('Dataset is not defined')
+        self._prophet = Prophet()
+    
+    def run(self, preiods=365):
+        future = self._prophet.make_future_dataframe(periods=365)
+        forecast = self._prophet.predict(future)
+
+
 
