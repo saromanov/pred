@@ -1,3 +1,4 @@
+import os
 import datetime
 import fbprophet
 import numpy as np
@@ -66,6 +67,3 @@ class Predict:
         plot.data[0].showlegend = False
         plot.data[1].showlegend = False
         plot.data[1].fillcolor = color
-
-
-
