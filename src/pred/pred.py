@@ -24,6 +24,11 @@ class Dataset:
         if self.ds is None:
             raise Exception('Unable to create dataset. Format is not supported')
     
+    def _prepare_dataset(self, ds):
+        ds.reset_index(inplace=True)
+        ds.drop_duplicates(subset='value', inplace=True)
+        ds.sort_index(ascending=True, inplace=True)
+    
     def _get_file_extension(self, path):
         ''' returns file extension like .csv, .txt
         '''
