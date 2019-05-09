@@ -33,7 +33,10 @@ class Dataset:
     def plot(self):
         ''' plot of the data from dataset
         '''
-        self.ds.iplot()
+        self.ds.plot()
+    
+    def size(self):
+        return self.ds.size
     
     def _get_file_extension(self, path):
         ''' returns file extension like .csv, .txt
@@ -67,3 +70,4 @@ class Predict:
         plot.data[0].showlegend = False
         plot.data[1].showlegend = False
         plot.data[1].fillcolor = color
+
