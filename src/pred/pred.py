@@ -20,12 +20,19 @@ class Dataset:
         except:
             print('Unexpected error')
             os._exit()
+        self.ds = self._read_file(path, self._get_file_extension(path))
+        if self.ds is None:
+            raise Exception('Unable to create dataset. Format is not supported')
     
     def _get_file_extension(self, path):
         ''' returns file extension like .csv, .txt
         '''
         filename, file_extension = os.path.splitext(path)
         return file_extension
+    
+    def _read_file(self, path, extension):
+        if extension == '.csv':
+            return pd.read_csv(path, index_col=0, header=0, parse_dates=True)
 
 
 
