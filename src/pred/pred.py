@@ -29,6 +29,11 @@ class Dataset:
         ds.drop_duplicates(subset='value', inplace=True)
         ds.sort_index(ascending=True, inplace=True)
     
+    def plot(self):
+        ''' plot of the data from dataset
+        '''
+        self.ds.iplot()
+    
     def _get_file_extension(self, path):
         ''' returns file extension like .csv, .txt
         '''
