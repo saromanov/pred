@@ -20,6 +20,12 @@ class Dataset:
         except:
             print('Unexpected error')
             os._exit()
+    
+    def _get_file_extension(self, path):
+        ''' returns file extension like .csv, .txt
+        '''
+        filename, file_extension = os.path.splitext(path)
+        return file_extension
 
 
 
