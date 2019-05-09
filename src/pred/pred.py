@@ -47,11 +47,20 @@ class Predict:
     def __init__(self, ds):
         if not ds:
             raise Exception('Dataset is not defined')
-        self._prophet = Prophet()
+        self._prophet = Prophet(interval_width=0.95)
     
     def run(self, preiods=365):
         future = self._prophet.make_future_dataframe(periods=365)
         forecast = self._prophet.predict(future)
+        self._prophet.plot(forecast)
+    
+    def model(self, mod, names, title='title', yTitle='yTitle', color=#CCFFCC):
+        if len(names) > 0:
+            mod = mod[names]
+        plot = mod.iplot(kind='data', title=title, yTitle=yTitle)
+        plot.data[0].showlegend = False
+        plot.data[1].showlegend = False
+        plot.data[1].fillcolor = color
 
 
 
